@@ -27,7 +27,7 @@ export default function Board({ data, onDataChange }) {
         <div className="board__header">
           <div className="board__title-wrap">
             <div className="board__marker-line" />
-            <h1 className="board__title">Video Project Board</h1>
+            <h1 className="board__title">Video Production Calendar</h1>
             <div className="board__subtitle">Production Schedule</div>
             <div className="board__marker-line" />
           </div>
@@ -69,7 +69,7 @@ export default function Board({ data, onDataChange }) {
 
         {/* Board footer */}
         <div className="board__footer">
-          <span className="board__brand">📹 Video Project Board</span>
+          <span className="board__brand">📹 Video Production Calendar</span>
         </div>
       </div>
 
