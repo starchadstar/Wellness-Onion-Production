@@ -77,9 +77,11 @@ export function loadData() {
     return {
       monthList: parsed.monthList || DEFAULT_MONTH_LIST,
       months: parsed.months || {},
+      storyboards: parsed.storyboards || [],
+      topics: parsed.topics || [],
     };
   } catch {
-    return { monthList: DEFAULT_MONTH_LIST, months: {} };
+    return { monthList: DEFAULT_MONTH_LIST, months: {}, storyboards: [], topics: [] };
   }
 }
 

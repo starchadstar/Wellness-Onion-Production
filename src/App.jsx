@@ -2,18 +2,9 @@ import { useState, useCallback } from 'react';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Board from './components/Board';
+import ItemBoard from './components/ItemBoard';
 import { loadData, saveData } from './utils/storage';
 import './App.css';
-
-function ComingSoon({ title, icon }) {
-  return (
-    <div className="coming-soon">
-      <div className="coming-soon__icon">{icon}</div>
-      <h2 className="coming-soon__title">{title}</h2>
-      <p className="coming-soon__text">This section is coming soon.</p>
-    </div>
-  );
-}
 
 export default function App() {
   const [activeView, setActiveView] = useState('dashboard');
@@ -28,10 +19,30 @@ export default function App() {
     <div className="app-layout">
       <Sidebar activeView={activeView} onNavigate={setActiveView} />
       <main className="app-main">
-        {activeView === 'dashboard'    && <Dashboard onNavigate={setActiveView} />}
-        {activeView === 'calendar'     && <Board data={data} onDataChange={handleDataChange} />}
-        {activeView === 'storyboards'  && <ComingSoon title="Story Boards" icon="🎬" />}
-        {activeView === 'topics'       && <ComingSoon title="Topics" icon="📋" />}
+        {activeView === 'dashboard' && (
+          <Dashboard onNavigate={setActiveView} />
+        )}
+        {activeView === 'calendar' && (
+          <Board data={data} onDataChange={handleDataChange} />
+        )}
+        {activeView === 'storyboards' && (
+          <ItemBoard
+            title="Story Boards"
+            subtitle="Scene Planning"
+            icon="🎬"
+            items={data.storyboards || []}
+            onItemsChange={items => handleDataChange({ ...data, storyboards: items })}
+          />
+        )}
+        {activeView === 'topics' && (
+          <ItemBoard
+            title="Topics"
+            subtitle="Content Ideas"
+            icon="📋"
+            items={data.topics || []}
+            onItemsChange={items => handleDataChange({ ...data, topics: items })}
+          />
+        )}
       </main>
     </div>
   );

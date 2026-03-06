@@ -19,13 +19,12 @@ export default function Sidebar({ activeView, onNavigate }) {
       {/* Nav */}
       <nav className="sidebar__nav">
         <div className="sidebar__nav-label">Menu</div>
-        {NAV_ITEMS.map((item, idx) => (
+        {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
             className={`sidebar__nav-item ${activeView === item.id ? 'sidebar__nav-item--active' : ''}`}
             onClick={() => onNavigate(item.id)}
           >
-            <span className="sidebar__nav-num">{idx + 1}</span>
             <span className="sidebar__nav-icon">{item.icon}</span>
             <span className="sidebar__nav-text">{item.label}</span>
           </button>
